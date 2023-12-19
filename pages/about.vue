@@ -4,12 +4,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+  export default {
 
-export default Vue.extend({
-  name: 'IndexPage'
-})
+  }
 </script>
 
 <style>
@@ -20,5 +18,13 @@ export default Vue.extend({
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+p {
+  color: red;
+}
+
+h1 {
+  color: lightblue;
 }
 </style>
