@@ -1,31 +1,11 @@
 <template>
   <div>
-    <nav class="navigation">
-      I am navigation
-      <nuxt-link to="/">Main</nuxt-link>
-      <nuxt-link to="/about">About page</nuxt-link>
-      <nuxt-link to="/id">Id page</nuxt-link>
-      <nuxt-link to="/id/123">ID 123</nuxt-link>
-    </nav>
+    <Navigation />
     <Nuxt />
   </div>
 </template>
 
 <style>
-
-.navigation {
-  width: 100%;
-  height: 80px;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: lightblue;
-}
-
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
