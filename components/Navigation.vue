@@ -1,11 +1,14 @@
 <template>
   <div>
     <nav class="navigation">
-      <Logo />
-      <nuxt-link to="/">Main</nuxt-link>
-      <nuxt-link to="/about">About page</nuxt-link>
-      <nuxt-link to="/id">Id page</nuxt-link>
-      <nuxt-link to="/id/123">ID 123</nuxt-link>
+      <Logo :title="logoText"/>
+      <nuxt-link v-for="elem in linksArray" class="link" :to="elem.to" :key="elem.title">
+        {{ elem.title }}
+      </nuxt-link>
+      <button class="button" @click="toggleModal">{{ text }}</button>
+      <p>{{ counter }}</p>
+      <!-- <input type="checkbox" v-model="showModal"/> -->
+      <Modal v-show="showModal" :onToggle="toggleModal"/>
     </nav>
   </div>
 </template>
@@ -15,8 +18,24 @@
   export default {
     components: {
       Logo
+    },
+    data() {
+      return {
+        text: 'Enter',
+        logoText: 'НКО-проект',
+        linksArray: [
+          { to: '/', title: 'Main' },
+          { to: '/about', title: 'About page' },
+        ],
+        showModal: false,
+        counter: 0,
+      }
+    },
+    methods: {
+      toggleModal() {
+        this.showModal = !this.showModal
+      }
     }
-
   }
 </script>
 
@@ -31,6 +50,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: lightblue;
+  background: rgba(255,255,255,0.2);
+}
+
+.button {
+  width: 100px;
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+.button:hover {
+  background: black;
+  color: white;
+  transition: .3s;
+}
+
+.link {
+  color: black;
 }
 </style>

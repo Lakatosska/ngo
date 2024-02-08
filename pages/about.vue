@@ -1,23 +1,23 @@
 <template>
-  <div class="container">
-    <Test />
+  <div class="main">
+    <h1>Nuxt JS</h1>
+    <p>And this is about page</p>
   </div>
 </template>
 
 <script>
   export default {
-
+    data() {
+      return {
+        testData: ''
+      }
+    }
   }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style scoped>
+.main {
+  text-align: left;
 }
 
 p {

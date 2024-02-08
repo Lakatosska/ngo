@@ -1,15 +1,20 @@
 <template>
   <h1>
-    I'm a logo!
+    {{ title }}
   </h1>
 </template>
 
 <script>
   export default {
-
+    props: {
+      title: {
+        type: String,
+        default: '',
+      }
+    }
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
