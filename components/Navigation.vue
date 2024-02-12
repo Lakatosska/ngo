@@ -2,19 +2,21 @@
   <div>
     <nav class="navigation">
       <Logo :title="logoText"/>
-      <nuxt-link v-for="elem in linksArray" class="link" :to="elem.to" :key="elem.title">
-        {{ elem.title }}
+      <nuxt-link v-for="elem in routes" class="link" :to="elem.path" :key="elem.name">
+        {{ elem.name }}
       </nuxt-link>
       <button class="button" @click="toggleModal">{{ text }}</button>
       <p>{{ counter }}</p>
       <!-- <input type="checkbox" v-model="showModal"/> -->
-      <Modal v-show="showModal" :onToggle="toggleModal"/>
+      <Modal v-show="showModal" @modalClose="toggleModal"/>
     </nav>
   </div>
 </template>
 
 <script>
   import Logo from '@/components/navigation/Logo.vue'
+  const DYNAMIC_ROUTE_MARKER = ':';
+
   export default {
     components: {
       Logo
@@ -33,7 +35,12 @@
     },
     methods: {
       toggleModal() {
-        this.showModal = !this.showModal
+        this.showModal = !this.showModal;
+      },
+    },
+    computed: {
+      routes() {
+        return this.$router.options.routes.filter((elem) => !elem.path.includes(DYNAMIC_ROUTE_MARKER))
       }
     }
   }

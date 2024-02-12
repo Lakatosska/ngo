@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Test />
+    <UserCard />
   </div>
 </template>
 
@@ -17,11 +17,13 @@ export default Vue.extend({
   background: url('static/images/bgd.jpeg') center no-repeat;
   background-size: cover;
   margin: 0 auto;
+  padding-top: 80px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .title {

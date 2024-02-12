@@ -1,17 +1,19 @@
 <template>
   <article class="modal-wrap">
     <div class="container">
-      <span class="icon-close" @click="onToggle" />
+      <span class="icon-close" @click="$emit('modalClose', { hello: 'world' } )" />
       <h1>Вход</h1>
-      <label class="label">
-        Email
-        <input class="input" type="email" v-model="email">
-      </label>
-      <label class="label">
-        Пароль
-        <input class="input" type="password">
-      </label>
-      <button class="button">Войти</button>
+      <form>
+        <label class="label">
+          Email
+          <input class="input" type="email" v-model="email" @keyup="handleKeyPress">
+        </label>
+        <label class="label">
+          Пароль
+          <input class="input" type="password">
+        </label>
+        <button type="submit" @click.prevent="handleBtnClick" class="button">Войти</button>
+      </form>
     </div>
   </article>
 </template>
@@ -23,10 +25,12 @@
         email: '',
       }
     },
-    props: {
-      onToggle: {
-        type: Function,
-        default: () => {},
+    methods: {
+      handleBtnClick() {
+        console.log('clicked!');
+      },
+      handleKeyPress(evt) {
+        console.log(evt, 'key pressed!')
       }
     }
   }
